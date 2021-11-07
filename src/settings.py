@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #aplicaciones
-    'incapacidad'
+    'incapacidad',
+    'core',
+    'registration',
 ]
 
 MIDDLEWARE = [
