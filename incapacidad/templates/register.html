@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<body class="login-page">
+    <div class="twitter-login-box">
+        <header>
+            <img src="/static/img/logo-dom.png" alt="Domina logo">
+            <h1 >Registrate</h1>
+        </header>
+
+        <form method="POST">
+
+            {% csrf_token %}
+            <div class="input-wrapper">
+                <label for="user-name-id">Nombres</label>
+                {{ form.first_name }}
+            </div>
+            <div class="input-wrapper">
+                <label for="user-name-id">Apellidos</label>
+                {{ form.last_name }}
+            </div>
+            <div class="input-wrapper">
+                <label for="user-name-id">Número Documento</label>
+                {{ form.username }}
+            </div>
+            <div class="input-wrapper">
+                <label for="user-name-id">Email</label>
+                {{ form.email }}
+            </div>
+
+            <div class="input-wrapper">
+                <label for="password-id">Password</label>
+                {{ form.password1 }}
+            </div>
+            <div class="input-wrapper">
+                <label for="password-id">Confirm Password</label>
+                {{ form.password2 }}
+            </div>
+
+            <button class="twitter-btn">Registrarse</button>
+        </form>
+
+        <div class="footer">
+            <a href="#">¿Ya tienes una cuenta? Login</a>
+        </div>
+
+    </div>
+
+{% endblock content %}

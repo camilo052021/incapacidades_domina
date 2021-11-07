@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<body class="login-page">
+<div class="twitter-login-box">
+    <header>
+        <img src="/static/img/logo-dom.png" alt="Domina logo">
+        <h1>Registrar</h1>
+    </header>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ formaEmpleado.as_p }}
+        </table>
+
+        <button class="twitter-btn">Enviar</button>
+    </form>
+
+</div>
+
+{% endblock content %}
