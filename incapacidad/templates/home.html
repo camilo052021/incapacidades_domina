@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Listado Incpacidades</h1>
+    <ul>
+        {% for inc in incapacidades %}
+            <li>{{ inc }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
