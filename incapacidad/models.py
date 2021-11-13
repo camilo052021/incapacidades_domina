@@ -103,7 +103,7 @@ class Incapacidades(models.Model):
         verbose_name_plural = 'Incapacidades'
 
     def __str__(self):
-        return f'Incapacidad {self.clasificacion}'
+        return f' {self.id} Incapacidad {self.clasificacion}'
 
 class Empleado(models.Model): ## Clase destinadad a la creación de los empleados
     cedula = models.CharField(verbose_name='Código de Empleado', max_length= 20, null=False)
@@ -128,4 +128,4 @@ class Empleado(models.Model): ## Clase destinadad a la creación de los empleado
         verbose_name_plural = 'Empleados'
 
     def __str__(self):
-        return f'Códgio Empleado  {self.codigo_empleado}'
+        return f' {self.id} Códgio Empleado {self.codigo_empleado}'
