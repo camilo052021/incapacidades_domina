@@ -12,8 +12,9 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Inicio</a>
+            <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,6 +22,12 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
+
+
+
+                        {% block index %}
+
+                        
                         <a class="nav-link" href="#">Empresa</a>
                     </li>
                     <li class="nav-item">
@@ -30,13 +37,20 @@
                         <a class="nav-link" href="#">Areas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Incapacidades</a>
+                        <a class="nav-link" href="{% url 'incapacidad' %}">Incapacidades</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Cargos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Nivel Acádemico</a>
+
+
+
+                        {% endblock %}
+
+
+
                     </li>
                 </ul>
             </div>
@@ -74,3 +88,9 @@
     </body>
 
 </html>
+
+
+
+
+
+
