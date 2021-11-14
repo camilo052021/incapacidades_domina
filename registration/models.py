@@ -6,11 +6,22 @@ from django.dispatch import receiver    # Libreria para hacer los cambios en los
 from django.db.models.signals import post_save  # Complemento de dispatch
 
 # Create your models here.
+class Perfil(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    desc = models.CharField(default='describir', max_length=50)
+    # imagen
+
+    class Meta:
+        ordering = ['user']
+
+    def __str__(self):
+        return f'Perfil de {self.user}'
+
+
 def custom_upload_to(instance, filename):
     old_instance = Profile.objects.get(pk=instance.pk)
     old_instance.avatar.delete()
     return 'profiles/' + filename
-
 class Profile(models.Model):
     usuario = models.OneToOneField(User, on_delete=CASCADE)
     telefono = models.CharField(max_length=20, verbose_name="Telefono", null=True, blank=True)
