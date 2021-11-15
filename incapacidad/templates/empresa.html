@@ -2,9 +2,8 @@
 
 {% block content %}
 
-
 <div class="container">
-    <a class="btn btn-success" href="{% url 'agregar_inc' %}">Agregar</a>
+    <a class="btn btn-success" href="{% url 'agregar_empresa' %}">Agregar</a>
     <div>
     <br>
     
@@ -21,13 +20,13 @@
         </thead>
         <tbody>
 
-            {% for inc in incapacidades %}
+            {% for empresa in empresas %}
             <tr>
-                <th scope="row">{{ inc.id }}</th>
-                <td>{{ inc.cedula }}</td>
-                <td>{{ inc.origen }}</td>
-                <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_inc' inc.id %}">Eliminar</a></td>
-                <td><a class="btn btn-primary btn-sm" href="{% url 'editar_inc' inc.id %}">Editar</a></td>
+                <th scope="row">{{ empresa.id }}</th>
+                <td>{{ empresa.nombre }}</td>
+                <td>{{ empresa.nit }}</td>
+                <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_empresa' empresa.id %}">Eliminar</a></td>
+                <td><a class="btn btn-primary btn-sm" href="{% url 'editar_empresa' empresa.id %}">Editar</a></td>
             </tr>
             {% endfor %}
         </tbody>

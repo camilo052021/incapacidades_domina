@@ -1,13 +1,12 @@
-{% extends 'base.html' %}
-
-{% block content %}
-
 <body class="login-page">
-    <div class="twitter-login-box">
+    <div>
         <header>
-            <img src="/static/img/logo-dom.png"
-                alt="Domina logo">
-            <h1>Inicia Sesión</h1>
+            <img src="/static/img/logo-dom.png" alt="Domina logo">
+            <div>
+                <a href="{% url 'inicio' %}">Inicio</a>
+            </div>
+            <h2>Inicia Sesión</h2>
+
         </header>
 
         <form method="post">
@@ -19,20 +18,19 @@
 
             <div class="input-wrapper">
                 <label for="password-id">Password</label>
-                 {{ form.password }}
+                {{ form.password }}
             </div>
 
             {% if form.errors %}
             <p>Usuario o clave incorrecta.</p>
             {% endif %}
 
-            <button class="twitter-btn">Log in</button>
+            <button class="btn btn-primary">Log in</button>
         </form>
 
         <div class="footer">
             <a href="#">Olvidó su Password</a> .
-            <a href="#">Registrate</a>
+            <a href="{% url 'register' %}">Registrate</a>
         </div>
 
     </div>
-    {% endblock content %}

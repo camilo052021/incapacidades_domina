@@ -11,7 +11,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('inicio')
     else:
         form = UserRegisterForm()
 

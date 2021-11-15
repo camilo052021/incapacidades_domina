@@ -1,10 +1,13 @@
 import datetime
 from django.db import models
+from django.contrib.auth.models import User
+from django.db import models
 from django.db.models.base import Model
 from datetime import date
 from django.db.models.deletion import CASCADE
 from core.types.listas_desplegables import *
 from django.dispatch import receiver            # Libreria para hacer los cambios en los datos
+from registration.models import Profile
 
 # Create your models here.
 
@@ -29,11 +32,11 @@ class Empresa(models.Model): ## Clase que se usara para la creación de las empr
         verbose_name_plural = 'Empresa'
 
     def __str__(self):
-        return f'Nombre Empresa {self.nombre}'
+        return f'Nombre Empresa:  {self.nombre}'
 
 class Areas(models.Model):## Clase que se usara para la creación de las áreas que tiene la empresa ingresada
-    nombre_area = models.CharField(verbose_name='Nombre Area', max_length= 255, null=False, blank=False)
     nit_empresa = models.ForeignKey(Empresa, on_delete= CASCADE)
+    nombre_area = models.CharField(verbose_name='Nombre Area', max_length= 255, null=False, blank=False)
     create_at = models.DateField(auto_now_add=True, verbose_name="Creado el", null=True)
     modify_at = models.DateField(auto_now=True, verbose_name="Actualizado el")
      
@@ -85,11 +88,11 @@ class Cie10(models.Model):
         return f'Diagnóstico {self.diagnostico}'
 
 class Incapacidades(models.Model):
-    mes  = models.CharField(verbose_name="Mes", max_length=30)
+    cedula  = models.ForeignKey(Profile, on_delete=CASCADE)
     origen = models.CharField(verbose_name="Origen", max_length=155)
     clasificacion = models.CharField(verbose_name="Clasificación", max_length=155)
     fecha_inicio = models.DateField(verbose_name="Fecha de Inicio", auto_now=False)
-    fecha_fin = models.DateField(verbose_name="Fecha de Finalzaición", auto_now=False)
+    fecha_fin = models.DateField(verbose_name="Fecha de Finalización", auto_now=False)
     archivo_inc = models.FileField(default='/static/media/archivos', verbose_name="Cargue el archivo con la incapacidad")
     total_incapacidad = models.IntegerField(verbose_name="Total días incapacidad")
     valor_incapacidad = models.DecimalField(verbose_name="Valor Incapacidad", decimal_places=2, max_digits=12)
@@ -106,15 +109,15 @@ class Incapacidades(models.Model):
         return f' {self.id} Incapacidad {self.clasificacion}'
 
 class Empleado(models.Model): ## Clase destinadad a la creación de los empleados
-    cedula = models.CharField(verbose_name='Código de Empleado', max_length= 20, null=False)
+    cedula = models.ForeignKey(Profile, on_delete=CASCADE)
     area = models.ForeignKey(Areas, on_delete=CASCADE)
     cargo = models.ForeignKey(Cargos, on_delete=CASCADE)
     nivel_academico = models.ForeignKey(NivelAcademico, on_delete=CASCADE)
     fecha_ingreso = models.DateField(verbose_name='Fecha de ingreso')
-    salario_basico = models.DecimalField(verbose_name='Salario', max_digits=12, decimal_places=2,default=0)
+    salario_basico = models.DecimalField(verbose_name='Salario', max_digits=12, decimal_places=2)
     arl = models.CharField(verbose_name='ARL', max_length= 100, null=False)
     tipo_contrato = models.CharField(verbose_name="Tipo Contrato",max_length=255, choices=Contrato)
-    antiguedad = models.DecimalField(verbose_name="Tiempo en la empresa", max_digits=2, decimal_places=2,default=0)
+    antiguedad = models.DecimalField(verbose_name="Tiempo en la empresa", max_digits=2, decimal_places=2)
     barrio = models.CharField(verbose_name="Barrio", max_length=255, null=True, default="No indicado")
     ciudad = models.CharField(verbose_name="Ciudad", max_length=255, null=False, default="No indicada")
     departamento = models.CharField(verbose_name="Departamento", max_length=255, null=False, default="No indicado")

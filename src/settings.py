@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'src.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'domina_incapacidades',
+        'NAME': 'incapacidades_domina',
         'USER': 'camilo',
         'PASSWORD': '12345',
         'HOST': '127.0.0.1',
@@ -136,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'inicio'
 LOGOUT_REDIRECT_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
