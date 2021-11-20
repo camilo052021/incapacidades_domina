@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block jumbo %}
+    <h2 style="text-align: center;">Áreas Domina</h2>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <a class="btn btn-success" href="{% url 'agregar_area' %}">Agregar</a>
+    <div>
+    <br>
+    
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre Empresa</th>
+                <th scope="col">Área</th>
+                <th scope="col">Opción1</th>
+                <th scope="col">Opción2</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for area in areas %}
+            <tr>
+                <th scope="row">{{ area.id }}</th>
+                <td>{{ area.nit_empresa }}</td>
+                <td>{{ area.nombre_area }}</td>
+                <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_area' area.id %}">Eliminar</a></td>
+                <td><a class="btn btn-primary btn-sm" href="{% url 'editar_area' area.id %}">Editar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

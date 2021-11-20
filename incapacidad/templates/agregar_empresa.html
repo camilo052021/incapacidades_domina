@@ -1,13 +1,66 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block jumbo %}
+    <h2 style="text-align: center;">Agregar Empresa</h2>
+{% endblock %}
 
 {% block content %}
 <div class="container">
     <form method='POST'>
         {% csrf_token %}
-        <div class="form-group">
-            {{ form }}
-            <button type="submit" class="btn btn-primary">Agregar</button>
+
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.nombre|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.nit|as_crispy_field }}
+            </div>
+
+            <div class="form-group col-md-3 mb-0">
+                {{ form.ciudad|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.departamento|as_crispy_field }}
+            </div>
+
         </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.direccion|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.telefonos|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.correo|as_crispy_field }}
+            </div>
+
+            <div class="form-group col-md-3 mb-0">
+                {{ form.cant_trabajadores|as_crispy_field }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.naturaleza_empresa|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.actividad|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.nivel_riesgo|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.tipo|as_crispy_field }}
+            </div>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+
     </form>
 </div>
 {% endblock %}

@@ -41,7 +41,7 @@ class Profile(models.Model):
         verbose_name_plural = 'Usuarios'
 
     def __str__(self):
-        return f'Perfiles {self.cedula}'
+        return self.cedula
 
 # Función exclusiva para los usuarios logueados:
 @receiver(post_save, sender=User)

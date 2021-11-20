@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'incapacidad',
     'core',
     'registration',
+    # para los formularios
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [

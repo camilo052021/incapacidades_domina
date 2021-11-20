@@ -1,13 +1,60 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block jumbo %}
+    <h2 style="text-align: center;">Editar Incapacidades</h2>
+{% endblock %}
 
 {% block content %}
 <div class="container">
     <form method='POST'>
         {% csrf_token %}
-        <div class="form-group">
-            {{ form }}
-            <button type="submit" class="btn btn-primary">Modificar</button>
+
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.cedula|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.origen|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.clasificacion|as_crispy_field }}
+            </div>
         </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.fecha_inicio|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.fecha_fin|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.total_incapacidad|as_crispy_field }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.valor_incapacidad|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.valor_asumido_empresa|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.valor_asumido_eps|as_crispy_field }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.archivo_inc|as_crispy_field }}
+            </div>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+
     </form>
 </div>
 {% endblock %}

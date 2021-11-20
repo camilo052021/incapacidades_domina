@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block jumbo %}
+    <h2 style="text-align: center;">Empleados Domina</h2>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <a class="btn btn-success" href="{% url 'agregar_empleado' %}">Agregar</a>
+    <div>
+    <br>
+    
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Opción1</th>
+                <th scope="col">Opción2</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for empleado in empleados %}
+            <tr>
+                <th scope="row">{{ empleado.id }}</th>
+                <td>{{ empleado.cedula }}</td>
+                <td>{{ empleado.cargo }}</td>
+                <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_empleado' empleado.id %}">Eliminar</a></td>
+                <td><a class="btn btn-primary btn-sm" href="{% url 'editar_empleado' empleado.id %}">Editar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -9,6 +9,7 @@ from core.types.listas_desplegables import *
 from django.dispatch import receiver            # Libreria para hacer los cambios en los datos
 from registration.models import Profile
 
+
 # Create your models here.
 
 class Empresa(models.Model): ## Clase que se usara para la creación de las empresas
@@ -32,7 +33,7 @@ class Empresa(models.Model): ## Clase que se usara para la creación de las empr
         verbose_name_plural = 'Empresa'
 
     def __str__(self):
-        return f'Nombre Empresa:  {self.nombre}'
+        return self.nombre
 
 class Areas(models.Model):## Clase que se usara para la creación de las áreas que tiene la empresa ingresada
     nit_empresa = models.ForeignKey(Empresa, on_delete= CASCADE)
@@ -45,7 +46,7 @@ class Areas(models.Model):## Clase que se usara para la creación de las áreas 
         verbose_name_plural = 'Areas de la empresa'
 
     def __str__(self):
-        return f'Nombre Area {self.nombre_area}'
+        return self.nombre_area
 
 
 class NivelAcademico(models.Model):## Clase que se usara para la creación de los nieveles académicos o estudios de los empleados
@@ -58,7 +59,7 @@ class NivelAcademico(models.Model):## Clase que se usara para la creación de lo
         verbose_name_plural = 'Niveles Académicos'
 
     def __str__(self):
-        return f'Nivel Académico {self.nivel}'
+        return self.nivel
 
 
 class Cargos(models.Model):
@@ -85,7 +86,7 @@ class Cie10(models.Model):
         verbose_name_plural = 'Diagnosticos'
 
     def __str__(self):
-        return f'Diagnóstico {self.diagnostico}'
+        return self.diagnostico
 
 class Incapacidades(models.Model):
     cedula  = models.ForeignKey(Profile, on_delete=CASCADE)
@@ -113,7 +114,7 @@ class Empleado(models.Model): ## Clase destinadad a la creación de los empleado
     area = models.ForeignKey(Areas, on_delete=CASCADE)
     cargo = models.ForeignKey(Cargos, on_delete=CASCADE)
     nivel_academico = models.ForeignKey(NivelAcademico, on_delete=CASCADE)
-    fecha_ingreso = models.DateField(verbose_name='Fecha de ingreso')
+    fecha_ingreso = models.DateField(verbose_name='Fecha de ingreso' )
     salario_basico = models.DecimalField(verbose_name='Salario', max_digits=12, decimal_places=2)
     arl = models.CharField(verbose_name='ARL', max_length= 100, null=False)
     tipo_contrato = models.CharField(verbose_name="Tipo Contrato",max_length=255, choices=Contrato)
@@ -131,4 +132,4 @@ class Empleado(models.Model): ## Clase destinadad a la creación de los empleado
         verbose_name_plural = 'Empleados'
 
     def __str__(self):
-        return f' {self.id} Códgio Empleado {self.codigo_empleado}'
+        return f' {self.id} Código Empleado {self.cedula}'

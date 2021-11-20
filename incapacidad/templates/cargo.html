@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block jumbo %}
+    <h2 style="text-align: center;">Cargos Domina</h2>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <a class="btn btn-success" href="{% url 'agregar_cargo' %}">Agregar</a>
+    <div>
+    <br>
+    
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Salario</th>
+                <th scope="col">Opción1</th>
+                <th scope="col">Opción2</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for cargo in cargos %}
+            <tr>
+                <th scope="row">{{ cargo.id }}</th>
+                <td>{{ cargo.cargo }}</td>
+                <td>{{ cargo.salario_cargo }}</td>
+                <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_cargo' cargo.id %}">Eliminar</a></td>
+                <td><a class="btn btn-primary btn-sm" href="{% url 'editar_cargo' cargo.id %}">Editar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

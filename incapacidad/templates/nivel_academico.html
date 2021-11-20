@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block jumbo %}
+    <h2 style="text-align: center;">Nivel Académico</h2>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <a class="btn btn-success" href="{% url 'agregar_nivel_academico' %}">Agregar</a>
+    <div>
+    <br>
+    
+    </div>
+    <table class="table">
+        <thead class="thead-dark" >
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nivel Académico</th>
+                <th scope="col">Opción1</th>
+                <th scope="col">Opción2</th>
+        
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for nivel_academico in niveles_academicos %}
+            <tr>
+                <th scope="row">{{ nivel_academico.id }}</th>
+                <td>{{ nivel_academico.nivel }}</td>
+                
+                <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_nivel_academico' nivel_academico.id %}">Eliminar</a></td>
+                <td><a class="btn btn-primary btn-sm" href="{% url 'editar_nivel_academico' nivel_academico.id %}">Editar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

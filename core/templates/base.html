@@ -23,22 +23,22 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
 
-                        <a class="nav-link" href="#">Empresa</a>
+                        <a class="nav-link" href="{% url 'empresa' %}">Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Empleados</a>
+                        <a class="nav-link" href="{% url 'empleado' %}">Empleados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Areas</a>
+                        <a class="nav-link" href="{% url 'area' %}">Areas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'incapacidad' %}">Incapacidades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Cargos</a>
+                        <a class="nav-link" href="{% url 'cargo' %}">Cargos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nivel Acádemico</a>
+                        <a class="nav-link" href="{% url 'nivel_academico' %}">Nivel Acádemico</a>
 
 
                     </li>
@@ -47,18 +47,18 @@
         </div>
     </nav>
 
-
-    <div class="jumbotron jumbotron-fluid bg-white">
+    <div class="jumbotron jumbotron-fluid bg-gray">
         <div class="container tetx-center">
-            <h1 class="display-4">Listado de Incapacidades</h1>
-            <p class="lead">Incapacidades Domina</p>
+            {% block jumbo %}
+            <h2 class="display-5" , style="text-align: center;">Domina</h2>
+            {% endblock %}
         </div>
     </div>
 
     {% block content %}
     {% endblock %}
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Optional JavaScript; choose one of the two! 
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
