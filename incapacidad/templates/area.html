@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
-{% block jumbo %}
-    <h2 style="text-align: center;">Áreas Domina</h2>
-{% endblock %}
 
 {% block content %}
+<br>
+<h2 style="text-align: center;">
+    <caption>Áreas</caption>
+</h2>
 
 <div class="container">
     <a class="btn btn-success" href="{% url 'agregar_area' %}">Agregar</a>
     <div>
-    <br>
-    
+        <br>
     </div>
     <table class="table">
         <thead class="thead-dark">
@@ -17,8 +17,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nombre Empresa</th>
                 <th scope="col">Área</th>
-                <th scope="col">Opción1</th>
-                <th scope="col">Opción2</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -28,8 +27,9 @@
                 <th scope="row">{{ area.id }}</th>
                 <td>{{ area.nit_empresa }}</td>
                 <td>{{ area.nombre_area }}</td>
-                <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_area' area.id %}">Eliminar</a></td>
-                <td><a class="btn btn-primary btn-sm" href="{% url 'editar_area' area.id %}">Editar</a></td>
+                <td><a class="btn btn-danger btn-sm" href="{% url 'eliminar_area' area.id %}">Eliminar</a>
+                    <a class="btn btn-primary btn-sm" href="{% url 'editar_area' area.id %}">Editar</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

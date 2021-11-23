@@ -1,72 +1,44 @@
-<!doctype html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+{% block nav %}
+{% endblock %}
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+{% block jumbo %}
+    <h2 style="text-align: center;">Registrarse</h2>
 
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                    </li>
-                </ul>
+
+<div class="container">
+    <form method='POST'>
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.username|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.first_name|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.last_name|as_crispy_field }}
             </div>
         </div>
-    </nav>
 
-    <div class="container">
-        <h2>Información para tu perfíl</h2>
+        <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+                {{ form.email|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.password1|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.password2|as_crispy_field }}
+            </div>
+        </div>
+
         <br>
-        <form method='POST'>
-            {% csrf_token %}
-
-            <div class="form-group">
-                <label>Cédula</label>
-                <div>
-                    {{ form.username }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Nombres</label>
-                <div>
-                    {{ form.first_name }}
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Apellidos</label>
-                <div>
-                    {{ form.last_name }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Ingresa Contraseña</label>
-                <div>
-                    {{ form.password1 }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Confirma Contraseña</label>
-                <div></div>
-                {{ form.password2 }}
-            </div>
-    </div>
-    <div class="form-group">
         <button type="submit" class="btn btn-primary">Agregar</button>
-    </div>
     </form>
-    </div>
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 {% if request.user.is_authenticated %}
-
+<link rel="stylesheet" href="static/css/estilosDomina.css">
 <body>
     <header>
         <h1>!Bienvenido {{ request.user.first_name }}¡</h1>
@@ -7,19 +7,29 @@
 
     <nav>
         <a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0">Salir</a>
-        <!--<a href="#" class="btn text-white my-2 my-sm-0">Llenar Datos Empleado</a>-->
         <a href="{% url 'incapacidad' %}" class="btn text-white my-2 my-sm-0">Crear Reporte Incapacidad</a>
-        <!--<img width="250" src="/static/img/crear_incp.JPG">-->
-
     </nav>
+
+    <div>
+        <img class="img-fluid" src="/static/img/inicioDomina.png" style="float: center;" width="1050" height="510" >
+    </div>
 
     {% else %}
 
-    <button class="btn btn-primary">
-        <a style="color:blue;" href="{% url 'register' %}">Registrarse</a>
-    </button>
-    <button class="btn btn-primary">
-        <a style="color: blue;" href="{% url 'login' %}">Login</a>
-    </button>
+    <link rel="stylesheet" href="static/css/estilosDomina.css">
 
+        <header>
+            <h1>!Bienvenido {{ request.user.first_name }}¡</h1>
+        </header>
+
+        <nav>
+            <a href="{% url 'register' %}" class="btn text-white my-2 my-sm-0">Registrase</a>  
+            <a href="{% url 'login' %}" class="btn text-white my-2 my-sm-0">Login </a> 
+        </nav>
+
+    <div>
+        <img class="img-fluid" src="/static/img/inicioDomina.png" style="float: center;" width="1050" height="510" >
+    </div>
+        
+    
     {% endif %}

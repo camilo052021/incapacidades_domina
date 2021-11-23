@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block jumbo %}
-    <h2 style="text-align: center;">Editar Empleado</h2>
-{% endblock %}
-
 {% block content %}
+
+<br>
+<h2 style="text-align: center;">
+    <caption>Editar Empleados</caption>
+</h2>
+<br>
+
 <div class="container">
     <form method='POST'>
         {% csrf_token %}
