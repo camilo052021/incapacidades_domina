@@ -1,36 +1,53 @@
-<body class="login-page">
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% block nav %}
+
+{% endblock %}
+<br>
+<title>Login</title>
+
+<body style="text-align: center;">
     <div>
         <header>
             <img src="/static/img/logo-dom.png" alt="Domina logo">
-            <div>
-                <a href="{% url 'inicio' %}">Inicio</a>
-            </div>
-            <h2>Inicia Sesión</h2>
 
         </header>
+        <br>
+        <h2>Inicia Sesión</h2>
 
-        <form method="post">
-            {% csrf_token %}
-            <div class="input-wrapper">
-                <label for="user-name-id">Username</label>
-                {{ form.username }}
+        <body id="body">
+
+            <div id="login-card" class="card">
+                <div class="card-body">
+
+                    <br>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="input-wrapper">
+                            <label for="user-name-id">Username</label>
+                            {{ form.username }}
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="password-id">Password</label>
+                            {{ form.password }}
+                        </div>
+
+                        {% if form.errors %}
+                        <p>Usuario o clave incorrecta.</p>
+                        {% endif %}
+                        <br>
+                        <button class="btn btn-primary">Log in</button>
+                    </form>
+                    <br>
+                    <div class="footer">
+                        <a href="#">Olvidó su Password</a> .
+                        <a href="{% url 'register' %}">Registrate</a>
+                    </div>
+                </div>
             </div>
-
-            <div class="input-wrapper">
-                <label for="password-id">Password</label>
-                {{ form.password }}
-            </div>
-
-            {% if form.errors %}
-            <p>Usuario o clave incorrecta.</p>
-            {% endif %}
-
-            <button class="btn btn-primary">Log in</button>
-        </form>
-
-        <div class="footer">
-            <a href="#">Olvidó su Password</a> .
-            <a href="{% url 'register' %}">Registrate</a>
-        </div>
-
     </div>
+</body>
+
+{% endblock %}

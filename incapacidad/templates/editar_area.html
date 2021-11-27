@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-
 <br>
 <h2 style="text-align: center;">
     <caption>Editar Áreas</caption>
@@ -19,6 +18,9 @@
             </div>
             <div class="form-group col-md-3 mb-0">
                 {{ form.nombre_area|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                {{ form.centro_costo|as_crispy_field }}
             </div>
         </div>
         <br>

@@ -51,6 +51,7 @@ class AreaForm(forms.ModelForm):
         widgets = {
             'nit_empresa' : forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'Nit'}),
             'nombre_area' : forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'Nombre Area'}),
+            'centro_costo' : forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'Cecos'}),
         }
 
 
